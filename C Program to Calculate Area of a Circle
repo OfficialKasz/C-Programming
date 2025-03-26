@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int radius, area;
+int main (){
+	printf("Enter radius: ");
+	scanf("%d", &radius);
+	area = (int)(3.14159 * radius * radius);
+	printf("Area = %d\n", area);
+
+}
