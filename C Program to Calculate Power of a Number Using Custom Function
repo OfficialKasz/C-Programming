@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+
+double power(double base, int e);
+
+int main(){
+	int e, b, a;
+
+	printf("Enter your base (1-100): ");
+	scanf("%d", &b);
+	fflush;
+	
+	printf("\nEnter your exponent (1-100): ");
+	scanf("%d", &e);
+	fflush;
+	
+	
+	a=power(b, e);
+	
+	printf("%d to the power of %d is %d",b,e,a);
+}
+
+int sum(int in1, int in2){
+	return(in1*in2);
+}
+
+double power(double base, int e){
+	int ans = base;
+	for (int i=1; i <e; i++){
+		ans = sum(ans, base);
+	}
+	return ans;
+}
