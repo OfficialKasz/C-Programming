@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <Windows.h>
+#include <Mmsystem.h>
+#include <time.h>
+#include <stdlib.h>
+//Lukasz Janik
+//I have neither given or received, nor have I tolerated others' use of unauthorized aid
+
+int largest(int *x, int s);
+
+int main(){
+	const int MAX = 5;
+	int array[MAX];
+	int *count[MAX];
+	//Write a forloop to populate the array with random ints from 1-10
+	srand(time(NULL));						//function for the random command
+	for(int i=0; i<MAX; i++){
+	int randomNumber = rand() % 10;
+	array[i]=randomNumber;
+	count[i]=&array[i];
+	printf("%d", *count[i]);
+	
+	}
+	int a=largest(*count,MAX);
+	printf("\nBiggest value in the array is %d",a);
+}
+
+
+int largest(int *x, int s){
+	int i;
+	int *biggest[s];
+	biggest[0]=&x[0];
+	//write a for loop to compare with the current biggest
+	for(i=0;i<s;i++){
+		if(biggest[0]<&x[i]){
+			biggest[0]=&x[i];
+		}
+	}
+	return *biggest[0];
+}
