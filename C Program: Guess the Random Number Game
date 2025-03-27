@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+int main(){
+	int count=0;
+	int x=0;
+	int number;
+	srand((unsigned)time(NULL));
+	int randomNumber = rand() % 1001;	//gets a random number
+	while(x==0){
+		count++;
+		printf("Pick a number between 0 and 1000: \n");
+		scanf("%d",&number);
+		if(number==randomNumber){
+			printf("Congratulations! You guessed the right number in %d tries", count);
+			x=1;
+		}
+		else if(number>=randomNumber){
+			printf("You guessed High\n");
+		}
+		else if(number<=randomNumber){
+			printf("You guessed Low\n");
+		}
+		
+	}
+	
+}
