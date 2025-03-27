@@ -1,0 +1,29 @@
+#include <stdio.h>
+//Lukasz Janik
+//I have neither given or received, nor have I tolerated others' use of unauthorized aid
+
+
+int main(){
+	const int SIZE = 100;
+
+	short shortarray[SIZE];
+	printf("\nSize of short = %hi bytes", sizeof(short));
+	printf("\nSize of shortArray = %hi bytes", sizeof(shortarray));
+	
+	int intarray[SIZE];
+	printf("\nSize of int = %d bytes", sizeof(int));
+	printf("\nSize of intArray = %d bytes", sizeof(intarray));
+	
+	long longarray[SIZE];
+	printf("\nSize of long = %d bytes", sizeof(long));
+	printf("\nSize of longArray = %d bytes", sizeof(longarray));
+	
+	float floatarray[SIZE];
+	printf("\nSize of float = %d bytes", sizeof(float));
+	printf("\nSize of floatArray = %d bytes", sizeof(floatarray));
+	
+	double doublearray[SIZE];
+	printf("\nSize of double = %d bytes", sizeof(double));
+	printf("\nSize of doubleArray = %d bytes", sizeof(doublearray));
+
+}
