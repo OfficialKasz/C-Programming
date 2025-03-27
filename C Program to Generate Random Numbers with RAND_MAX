@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+int main(){
+	srand((unsigned)time(NULL));
+	int randomNumber = rand() % 1001;	//gets a random number
+	printf("The random number is: %d\n", randomNumber);
+	printf("The C max random number is: %d\n", RAND_MAX);
+	printf("The set max random number it can be is 1000\n");
+}
