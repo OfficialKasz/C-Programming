@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <time.h>
+
+//Lukasz Janik 
+
+int random_ascii(unsigned int seed){ // Generates a random or character
+
+	int ascii_num = rand() % (123-48) + 48;
+    while((ascii_num >= 58 && ascii_num <= 64) || (ascii_num >= 91 && ascii_num <= 96)){
+        ascii_num = rand() % (123-48) + 48;
+    }
+    return ascii_num;
+}
+
+int count_characters(char *array, char flag, int *capital, int *lower, int *numbers);
+
+int main() {
+	char flag = '*';
+	char *array;
+	srand(time(NULL));
+	
+	int rdm_number = rand() % 50; //random sized array
+	//I had to limit this so that I didn't have to take 8 pages of screenshots
+	
+	array = (char*)malloc(rdm_number*sizeof(char));
+	
+	for (int i = 0; i < rdm_number; i++){
+		char ascii_char = random_ascii(time(NULL));
+        array[i] = ascii_char;
+        printf("%c (%d) ", ascii_char, ascii_char);
+	}
+	array[rdm_number] = flag; // add flag to the end	
+	
+	int capital = 0;
+	int lower = 0;
+	int numbers = 0;
+    int size = count_characters(array, flag, &capital, &lower, &numbers);
+    printf("Size of array: %d\n", size);
+	
+	free(array);
+	
+	return 0;
+}
+
+int count_characters(char *array, char flag, int *capital, int *lower, int *numbers){
+	int size = 0;
+    for(int i = 0; array[i] != flag; i++){
+        size++;
+        if(isupper(array[i])) {
+            (*capital)++;
+        }
+        else if(islower(array[i])) {
+            (*lower)++;
+        }
+        else if(isdigit(array[i])) {
+            (*numbers)++;
+        }
+        printf("Position %d: %c (%d)\n", i, array[i], array[i]);
+    }
+    printf("Number of capital letters: %d\n", *capital);
+    printf("Number of lowercase letters: %d\n", *lower);
+    printf("Number of digits: %d\n", *numbers);
+    return size;
+}
