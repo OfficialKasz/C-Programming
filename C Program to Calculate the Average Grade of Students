@@ -1,0 +1,26 @@
+#include <stdio.h>
+//Lukasz Janik
+//I have neither given or received, nor have I tolerated others' use of unauthorized aid
+
+
+int main(){
+	const int STUDENTS=5;
+	int grade[STUDENTS];
+	int placement;
+	int number=1;
+
+	for (int i=1; i<=STUDENTS; i++){
+		printf("Enter a Student %d's Grade: ", number);
+		scanf("%d", &grade[i]);
+		number++;
+	}
+	
+	int added;
+	int average;
+	
+	added=(grade[1]+grade[2]+grade[3]+grade[4]+grade[5]);
+	average=added/5;
+	printf("Average score is %d", average);
+	
+	return 0;
+}
