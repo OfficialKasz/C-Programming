@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+/**
+Write a function that copies one array of characters to a new string.
+The function will return a pointer to the copy of the original string.
+
+In your function, use malloc() to allocate enough to allocate
+enough memory to hold the new copy of the string.
+
+In main(), prompt the user for a string.  Pass the string
+to the function.  Print out both the original string and the copy.
+
+You may not use the library strcpy()function.
+**/
+
+char *copyString(char *str);
+
+int main() {
+    char input[100];
+    printf("Enter a string: ");
+    scanf("%s", input);
+
+    char *copy = copyString(input);
+
+    printf("Original string: %s\n", input);
+    printf("Copy string: %s\n", copy);
+
+    free(copy);
+    return 0;
+}
+
+char *copyString(char *str) {
+    int len = 0;
+    while (str[len] != '\0') {
+        len++;
+    }
+    len++;
+
+    char *copy = (char *)malloc(len);
+
+    for (int i = 0; i <= len; i++) {
+        copy[i] = str[i];
+    }
+    return copy;
+}
