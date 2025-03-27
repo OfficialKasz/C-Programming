@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Define the Data structure
+struct Data {
+    char name[20];
+    struct Data* next;
+};
+
+int main() {
+    //Pointers
+    struct Data* head = NULL;
+    struct Data* new = NULL;
+    struct Data* current = NULL;
+
+    //Add a new node to the front
+    new = (struct Data*)malloc(sizeof(struct Data));
+    strcpy(new->name, "Catherine");
+    new->next = head;
+    head = new;
+
+    //Print the contents
+    current = head;
+    while (current != NULL) {
+        printf("%s\n", current->name);
+        current = current->next;
+    }
+	
+	printf("\n");
+
+    //Add two more nodes to the front
+    new = (struct Data*)malloc(sizeof(struct Data));
+    strcpy(new->name, "Beatrice");
+    new->next = head;
+    head = new;
+
+    new = (struct Data*)malloc(sizeof(struct Data));
+    strcpy(new->name, "Abigail");
+    new->next = head;
+    head = new;
+
+    //Sort the list in alphabetical order
+    int swapped;
+    struct Data* ptr1;
+    struct Data* pointer = NULL;
+
+    // If the list is empty, return
+    if (head == NULL) {
+        return 0;
+    }
+
+    do {
+        swapped = 0;
+        ptr1 = head;
+
+        while (ptr1->next != pointer) {
+            if (strcmp(ptr1->name, ptr1->next->name) > 0) {
+                // Swap the nodes
+                struct Data* temp = ptr1->next;
+                ptr1->next = temp->next;
+                temp->next = ptr1;
+                if (ptr1 == head) {
+                    head = temp;
+                }
+                swapped = 1;
+            }
+            ptr1 = ptr1->next;
+        }
+        pointer = ptr1;
+    } while (swapped);
+
+    // Print the sorted list
+    current = head;
+    while (current != NULL) {
+        printf("%s\n", current->name);
+        current = current->next;
+    }
+
+    return 0;
+}
