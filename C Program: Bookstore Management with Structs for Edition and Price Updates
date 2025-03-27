@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define SIZE 4
+
+struct book {
+    char title[50];
+	int edition;
+    float price;
+}; 
+
+void print(struct book bookstore[], int size) {
+    printf("Title\t\tEdition\tPrice\n");
+    for (int i = 0; i < size; i++) {
+        printf("%-20s %d\t%.2f\n", bookstore[i].title, bookstore[i].edition, bookstore[i].price);
+    }
+}
+
+void update(struct book bookstore[], int size) {
+    for (int i = 0; i < size; i++) {
+        bookstore[i].edition += 1;
+        bookstore[i].price *= 1.1;
+    }
+}
+
+int main(){
+	
+	struct book bookstore[SIZE] = {
+        {"The Old Man and the C", 5, 10.00},
+        {"C of Love", 3, 20.00},
+        {"C Change", 2, 15.50},
+        {"Out to C", 1, 5.00}
+    };
+
+    printf("Initial bookstore:\n");
+    print(bookstore, SIZE);
+
+    update(bookstore, SIZE);
+
+    printf("\nUpdated bookstore:\n");
+    print(bookstore, SIZE);
+
+    return 0;
+}
