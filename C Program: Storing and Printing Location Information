@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+//Lukasz Janik
+
+typedef struct {
+	//latitude 
+    double lat_degrees;
+    double lat_minutes;
+    double lat_seconds;
+	
+	//longititude
+    double long_degrees;
+    double long_minutes;
+    double long_seconds;
+	
+	//names
+    char name1[50];
+    char name2[50];
+    char name3[50];
+} Location;
+
+int main(){
+    Location place;    
+    place.lat_degrees = 42;
+    place.lat_minutes = 69;
+    place.lat_seconds = 12.12;
+    place.long_degrees = -420;
+    place.long_minutes = 96;
+    place.long_seconds = 21.21;
+    // Set names
+    strcpy(place.name1, "Your Mom's House");
+    strcpy(place.name2, "My second home");
+    // Print out information
+    printf("Latitude: %f degrees %f minutes %f seconds\n", place.lat_degrees, place.lat_minutes, place.lat_seconds);
+    printf("Longitude: %f degrees %f minutes %f seconds\n", place.long_degrees, place.long_minutes, place.long_seconds);
+	printf("Name 1: %s\n", place.name1);
+    if (place.name2[0] != '\0'){
+        printf("Name 2: %s\n", place.name2);
+    }
+    if (place.name3[0] != '\0'){
+        printf("Name 3: %s\n", place.name3);
+    }
+   
+    return 0;
+}
