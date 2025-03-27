@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//Lukasz Janik (not Luke it was a test)
+
+typedef struct {
+    char *first_name;
+    char *last_name;
+    char *prefered;
+} Student;
+
+int main() {
+    int num_stud;
+    printf("How many students in the class?: \n");
+    scanf("%d", &num_stud);
+
+    Student *roster = malloc(num_stud * sizeof(Student));
+
+    for (int i = 0; i < num_stud; i++) {
+        char first[50];
+        char last[50];
+        char prefered[50];
+
+        printf("\nEnter the first and last name of student %d: ", i + 1);
+        scanf("%s %s", first, last);
+        printf("\nEnter the prefered name of student %d: ", i + 1);
+        scanf("%s", prefered);
+
+        roster[i].first_name = malloc((strlen(first) + 1) * sizeof(char));
+        strcpy(roster[i].first_name, first);
+
+        roster[i].last_name = malloc((strlen(last) + 1) * sizeof(char));
+        strcpy(roster[i].last_name, last);
+
+        roster[i].prefered = malloc((strlen(prefered) + 1) * sizeof(char));
+        strcpy(roster[i].prefered, prefered);
+
+        if (strlen(first) != strlen(prefered)) {
+            roster[i].first_name = realloc(roster[i].first_name, (strlen(prefered) + 1) * sizeof(char));
+            strcpy(roster[i].first_name, prefered);
+        }
+    }
+
+    printf("\nClass roster:\n");
+    for (int i = 0; i < num_stud; i++) {
+        printf("%s %s\n", roster[i].prefered, roster[i].last_name);
+    }
+
+    for (int i = 0; i < num_stud; i++) {
+        free(roster[i].first_name);
+        free(roster[i].last_name);
+        free(roster[i].prefered);
+    }
+    free(roster);
+
+    return 0;
+}
