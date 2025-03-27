@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main(){
+    char count, *ptr, *p; 							//a variable and two pointers
+    ptr = (char*) malloc(35 * sizeof(char));			//allocating memory 
+    if (ptr == NULL){
+        printf("Not enough memory in the buffer\n");	//print screen
+        exit(1);
+    }
+    printf("Character Allocation Successful!\n");		//print to screen
+    ptr = (char*) malloc(9 * sizeof(char));			//allocating memory
+    p=ptr;
+    for (int i = 0; i <= 26; i++){
+        *p = i + 65;
+		p++;
+    }
+    printf("The string: %s\n", ptr);				  	//print onto screen
+    free(ptr);
+    return 0;
+}
